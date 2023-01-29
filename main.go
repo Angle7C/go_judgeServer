@@ -1,12 +1,18 @@
 package main
 
-import "testts/untils"
+import (
+	GlobalConfig "testts/config"
+	"testts/controller"
+)
 
 var (
-	config *untils.Config
+	config *GlobalConfig.Config
 )
 
 func main() {
-	config.Init()
-
+	GlobalConfig.Init()
+	gin := GlobalConfig.GetGin()
+	controller.Init()
+	gin.Run()
+	//fmt.Println("%s\n%s", string(output), err.Error())
 }

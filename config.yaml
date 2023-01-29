@@ -1,6 +1,17 @@
 MinioConfig:
- Endpoint: 13212312
- AccessKeyId: 1323ersdfghf
- SecretAccessKey: fdgghdhgdf
- Secure: dygttdfh
- TimeZone: edrstryetytyu
+    Endpoint: 127.0.0.1:9000
+    AccessKeyId: chen
+    SecretAccessKey: 123456789
+    Secure: false
+    TimeZone: cn-north-1
+DataConfig:
+    Url: 127.0.0.1:3306
+    UserName: root
+    Password: ""
+    DataName: "oj"
+JudgeConfig:
+    Work: /judgeserver/work
+    JudgePath: /judgeserver/judge
+    CompilerPath: /judgeserver/compiler.sh
+    ComparePath: /judgeserver/compare.sh
+Port: 8080

@@ -1,12 +1,10 @@
-package untils
+package config
 
 import (
-	"context"
-	"io"
-	"log"
-
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
+	"io"
+	"log"
 )
 
 type MinioConfig struct {
@@ -16,13 +14,6 @@ type MinioConfig struct {
 	Secure          string `yaml:"Secure"`
 	TimeZone        string `yaml:"TimeZone"`
 }
-
-var (
-	client *minio.Client
-	config *MinioConfig
-	err    error
-	ctx    context.Context = context.Background()
-)
 
 func (config MinioConfig) Init() {
 	client, err = minio.New(config.Endpoint, &minio.Options{
@@ -37,7 +28,7 @@ func (config MinioConfig) Init() {
 }
 
 func CreateBucket(buckName string) bool {
-	err := client.MakeBucket(ctx, buckName, minio.MakeBucketOptions{Region: config.TimeZone})
+	err := client.MakeBucket(ctx, buckName, minio.MakeBucketOptions{Region: config.MinioConfig.TimeZone})
 	if err != nil {
 		log.Println("创建Bucket失败")
 		return false
